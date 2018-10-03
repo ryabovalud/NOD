@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">NOD</string>
+    <string name="button_nod">FIND NOD</string>
+    <string name="edit_value">Enter a value</string>
+</resources>
