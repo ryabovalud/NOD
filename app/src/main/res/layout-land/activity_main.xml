@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity"
+    tools:layout_editor_absoluteY="73dp">
+
+    <Button
+        android:id="@+id/Nod"
+        android:layout_width="0dp"
+        android:layout_height="76dp"
+        android:layout_marginEnd="186dp"
+        android:layout_marginRight="186dp"
+        android:layout_marginBottom="15dp"
+        android:onClick="sendMessage"
+        android:text="@string/button_nod"
+        app:layout_constraintBottom_toBottomOf="@+id/Num2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/Num2" />
+
+    <EditText
+        android:id="@+id/Num1"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="33dp"
+        android:layout_marginEnd="33dp"
+        android:layout_marginRight="33dp"
+        android:ems="10"
+        android:hint="@string/edit_value"
+        android:inputType="number"
+        app:layout_constraintEnd_toStartOf="@+id/Nod"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/Num2"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="31dp"
+        android:layout_marginEnd="33dp"
+        android:layout_marginRight="33dp"
+        android:ems="10"
+        android:hint="@string/edit_value"
+        android:inputType="number"
+        app:layout_constraintEnd_toStartOf="@+id/Nod"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/Num1" />
+
+</android.support.constraint.ConstraintLayout>
