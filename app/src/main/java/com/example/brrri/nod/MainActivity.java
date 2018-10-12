@@ -7,6 +7,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.util.Log;
 import android.content.Intent;
+import java.util.LinkedList;
 
 
 public class MainActivity extends AppCompatActivity {
@@ -15,7 +16,7 @@ public class MainActivity extends AppCompatActivity {
     public static final String EXTRA_MESSAGE = "com.example.myfirstapp.MESSAGE";
     private static final String KEY_NUM1 = "NUM1";
     private static final String KEY_NUM2 = "NUM2";
-    int num1,num2;
+    int num1,num2,nod;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,28 +39,48 @@ public class MainActivity extends AppCompatActivity {
         Intent intent = new Intent(this, DisplayMessageActivity.class);
         EditText el1 = (EditText)findViewById(R.id.Num1);
         EditText el2 = (EditText)findViewById(R.id.Num2);
-        int resNod;
+        NOD res = new NOD();
 
         if( el1.getText().toString().equals("") || el2.getText().toString().equals("") ) {
-             Log.d(TAG, "Данные не ввели, ну значит НОД = 0"); resNod=0;
+             Log.d(TAG, "Данные не ввели, ну значит НОД = 0");
+            intent.putExtra(EXTRA_MESSAGE, "NOD = "+0);
+            startActivity(intent);
         }
 
         else {
             num1 = Integer.parseInt(el1.getText().toString());
             num2 = Integer.parseInt(el2.getText().toString());
             Log.d(TAG, "Найдём НОД чисел "+num1+" "+num2);
-            int a = num1, b = num2;
-            while (b !=0) {
-                int tmp = a%b;
-                a = b;
-                b = tmp;
+            nod = res.resNod(num1,num2);
+            Log.d(TAG, "НОД = "+nod);
+            intent.putExtra(EXTRA_MESSAGE, "NOD = "+nod);
+            startActivity(intent);
+        }
+        res.showList();
+
+
+    }
+    public class NOD {
+        private LinkedList <Integer> nodList = new LinkedList <Integer>();
+
+        public int resNod (int num1,int num2){
+            nodList.add(num1);
+            nodList.add(num2);
+            while (num2 !=0) {
+                int tmp = num1%num2;
+                num1 = num2;
+                num2 = tmp;
             }
-            resNod = a;
-            Log.d(TAG, "НОД = "+resNod);
+            nodList.add(num1);
+            return num1;
         }
 
-        intent.putExtra(EXTRA_MESSAGE, "NOD = "+resNod);
-        startActivity(intent);
-    }
-    }
+        public void showList(){
+            System.out.println(nodList);
+        }
 
+        public void clearList(){
+            nodList.clear();
+        }
+    }
+    }
