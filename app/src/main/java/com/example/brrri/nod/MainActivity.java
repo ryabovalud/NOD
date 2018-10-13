@@ -17,11 +17,14 @@ public class MainActivity extends AppCompatActivity {
     private static final String KEY_NUM1 = "NUM1";
     private static final String KEY_NUM2 = "NUM2";
     int num1,num2,nod;
+    NOD res = new NOD();
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
     }
 
     @Override
@@ -39,7 +42,6 @@ public class MainActivity extends AppCompatActivity {
         Intent intent = new Intent(this, DisplayMessageActivity.class);
         EditText el1 = (EditText)findViewById(R.id.Num1);
         EditText el2 = (EditText)findViewById(R.id.Num2);
-        NOD res = new NOD();
 
         if( el1.getText().toString().equals("") || el2.getText().toString().equals("") ) {
              Log.d(TAG, "Данные не ввели, ну значит НОД = 0");
@@ -56,10 +58,10 @@ public class MainActivity extends AppCompatActivity {
             intent.putExtra(EXTRA_MESSAGE, "NOD = "+nod);
             startActivity(intent);
         }
+        
         res.showList();
-
-
     }
+
     public class NOD {
         private LinkedList <Integer> nodList = new LinkedList <Integer>();
 
@@ -76,11 +78,14 @@ public class MainActivity extends AppCompatActivity {
         }
 
         public void showList(){
-            System.out.println(nodList);
+            Log.d(TAG, "ИСТОРИЯ ОПЕРАЦИЙ: "+nodList.size()/3);
+            for(int i=0;i<nodList.size();i+=3) {
+                Log.d(TAG, " num1 = "+nodList.get(i)+ " num2 = "+nodList.get(i+1)+ " answer = "+nodList.get(i+2));
+            }
         }
 
         public void clearList(){
             nodList.clear();
         }
     }
-    }
+}
